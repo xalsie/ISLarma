@@ -1,0 +1,35 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+div.d-flex.flex-column {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+    border-width: 1px 0;
+}
+
+div.flex-column.p-5 {
+    width: -webkit-fill-available;
+}
+
+.select,
+#locale {
+    width: 100%;
+}
+.like {
+    margin-right: 10px;
+}
+button.swal2-cancel.btn.btn-secondary, button.swal2-confirm.btn.btn-success, button.btn.btn-primary.btn-xs.btn-edit {
+    margin-right: 10px;
+}

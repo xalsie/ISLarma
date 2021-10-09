@@ -1,0 +1,336 @@
+/*-------------------------*\
+    $BASE
+\*-------------------------*/
+@font-face {
+  font-family: "Proxima nova RG";
+  src: url("../Fonts/Proxima_nova_bold-webfont.ttf") format("TrueType");
+}
+
+@font-face {
+  font-family: "Billabong";
+  src: url("../Fonts/Billabong_logo_font.ttf") format("TrueType");
+}
+
+body {
+  font-size: .875rem;
+  font-family: "Proxima nova RG";
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+.logo-webfont {
+  font-family: "Billabong";
+  color: #DB98AC;
+}
+
+.logo-webfont:hover {
+  color: #BE7B8F;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0 !important;
+}
+
+.container-fluid {
+  -webkit-overflow-scrolling: touch;
+}
+
+/*-------------------------*\
+    $SIDE BAR
+\*-------------------------*/
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 48px 0 0;
+  background-color: #F7F7F7 !important;
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #596068;
+
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #727272;
+}
+
+.sidebar .nav-item.active {
+  color: #DB98AC;
+  border-right: 2px solid #DB98AC !important;
+
+  
+}
+.sidebar .nav-item.active a {
+  color: #DB98AC;
+}
+.border-end {
+  border-right: 3px solid #DB98AC !important;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+hr {
+  background-color: #aeaeae;
+  margin: 0.5rem 0;
+}
+
+#sidebarMenu ul.nav.flex-column.profileImg {
+  display: block !important;
+}
+
+.navbar.sticky-top.flex-md-nowrap.p-0 {
+  align-items: flex-start;
+}
+
+/*-------------------------*\
+    $NAV BAR
+\*-------------------------*/
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 2rem;
+  background-color: #F7F7F7;
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+.navbar-nav.px-3 {
+  margin-top: -22px;
+  background-color: #fff;
+  height: 48px;
+}
+
+.nav-item.text-nowrap {
+  margin-top: 4px;
+}
+
+.navbar-brand.logo-webfont {
+  display: block;
+  padding-top: 10px;
+}
+
+.active {
+  left: 0;
+}
+
+/*-------------------------*\
+    $GRID
+\*-------------------------*/
+#feedListCart .grid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.grid-sizer, .grid-item { 
+  width: 30%;
+  margin: 0.6%;
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/*-------------------------*\
+    $CARD
+\*-------------------------*/
+.card-img, .card-img-top {
+  min-height: 100px;
+  border-radius: 15px;
+}
+
+.border-light {
+  border-color: #F7F7F7 !important;
+  border-radius: 17px;
+}
+
+.card-footer {
+  border-top: 0;
+}
+
+.card-footer.bg-transparent > .row > .col-auto, .col {
+  --bs-gutter-x: 15px;
+  padding-right: calc(var(--bs-gutter-x)/ 3);
+  padding-left: calc(var(--bs-gutter-x)/ 3);
+  align-self: center;
+}
+
+.card-footer.bg-transparent > .row > .col:first-child {
+  padding-left: 0;
+}
+
+.card-footer.bg-transparent > .row > .col-auto:last-child {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/* Svg item center */
+.bi.bi-chat {
+  top: -2px;
+  position: relative;
+}
+
+@media only screen and (min-width: 1441px) {
+  div.grid-item {
+    width: 23%;;
+    margin: 0.6%;
+  }
+}
+
+/*-------------------------*\
+    $NAV BAR BOTTOM
+\*-------------------------*/
+#nav-menu {
+  display: none;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  color: #000;
+  background-color: #fff;
+  z-index: 5;
+}
+
+#nav-menu > .row > .col {
+  text-align: center;
+}
+
+#nav-menu .col.active {
+  color: #DB98AC;
+  stroke: #DB98AC;
+  stroke-width: 5%;
+}
+
+/*-------------------------*\
+    $SIDE BAR
+\*-------------------------*/
+.removeForAlign {
+  top: 48px;
+}
+
+.pt-3 {
+  padding-top: 1rem !important;
+}
+
+.nav-item span {
+  margin-left: 15px;
+  position: relative;
+  top: 2px;
+}
+
+/*-------------------------*\
+    $SVG ICON
+\*-------------------------*/
+#nav-menu svg.bi {
+  width: 2em;
+  height: 2em;
+  vertical-align: -1.625em;
+}
+
+/*-------------------------*\
+    $RESPONSIVE PHONE
+\*-------------------------*/
+@media only screen and (max-width: 767px) {
+  div.grid-item {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* .navbar-brand.col-md-3.col-lg-2.me-0.px-3.logo-webfont,
+  .navbar-toggler.position-absolute.d-md-none {
+    display: none;
+  } */
+
+  div.w-100.headerSearch {
+    display: none;
+  }
+
+  a.navbar-brand.logo-webfont {
+    display: block;
+    background-color: #ffffff;
+  }
+
+  a.navbar-brand.logo-webfont.headerLogo {
+    display: none;
+  }
+
+  #nav-menu {
+    display: block;
+  }
+
+  #feedListCart > div.grid {
+    margin-bottom: 80px;
+  }
+
+  .row {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+  }
+
+  :root {
+    --bs-gutter-x: 5px;
+  }
+}
+
+@media (min-width: 768px){
+  .px-md-4 {
+    padding-right: 0rem!important;
+  }
+}

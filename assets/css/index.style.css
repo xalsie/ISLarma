@@ -1,0 +1,22 @@
+/*
+	Utilities : Body
+	Language: CSS
+	Version : V1
+	Create by : Alexis giard
+*/
+
+.bg-dark {
+	background-color: #13161a !important;
+}
+
+.sidebar-sticky i.fas {
+	padding-right: 5px;
+}
+
+.sidebar .nav-link {
+	color: #999 !important;
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link:focus {
+	color: black !important;
+}
