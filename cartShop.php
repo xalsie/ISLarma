@@ -58,9 +58,9 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                                 <div class="row text-muted">{{i.description}}</div>
                             </div>
                             <div class="col text-muted">{{mapItemNumber[i.id]}}</div>
-                            <div class="col me-1">$ {{convertNumber(i.price*mapItemNumber[i.id])}}</div>
+                            <div class="col-3 me-2">{{convertNumber(i.price*mapItemNumber[i.id])}}</div>
                             <!-- <div class="col"> <a href="#"><i class="fal fa-minus-square"></i></a><a href="#" class="border">{{mapItemNumber[i.id]}}</a><a href="#"><i class="fal fa-plus-square"></i></a></div> -->
-                            <!-- <div class="col me-1">$ {{i.price*mapItemNumber[i.id]}}<span class="delete"><i class="fal fa-times"></i></span></div> -->
+                            <div class="col-3 me-1">{{convertNumber(i.price*mapItemNumber[i.id])}}<span class="delete" ng-click="deleteItem(i.id)" style="margin-left: 10px; cursor: pointer;"><i class="fal fa-times me-2"></i></span></div>
                         </div>
                     </div>
 
@@ -77,16 +77,17 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                     <hr>
                     <div class="row">
                         <div class="col" style="padding-left:0;">{{numberItem}} articles</div>
-                        <div class="col text-right">$ {{convertNumber(totalPrice)}}</div>
+                        <div class="col text-right">{{convertNumber(totalPrice)}}</div>
                     </div>
                     <div style="padding: 3vh 0;">
                         <p>Expédition</p>
                         <select ng-model="deliveryOpt" ng-options="Delivery.name for Delivery in selectedDelivery"></select>
-                        <div class="col text-right text-muted">{{deliveryOpt.description}}</div>
+                        <div class="col text-right text-muted" style="font-size: smaller;">Temps de livraison : {{deliveryOpt.description}}</div>
+                        <div class="col text-left text-muted" style="font-size: smaller;">Prix : {{convertNumber(deliveryOpt.price)}}</div>
                     </div>
                     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                         <div class="col" style="padding-left:0;">Prix Toatal</div>
-                        <div class="col text-right">$ {{convertNumber((totalPrice-0) + (deliveryOpt.price-0))}}</div>
+                        <div class="col text-right">{{convertNumber((totalPrice-0) + (deliveryOpt.price-0))}}</div>
                     </div>
                     <div><a class="btn btn-outline-dark" href="/toValidate.php?id={{deliveryOpt.id}}">Valider la commande</a></div>
                 </div>

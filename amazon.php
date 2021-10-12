@@ -41,11 +41,11 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                             <!-- Product image-->
                             <img class="card-img-top" src="\assets\image\arms\{{i.image}}" alt="er" />
                             <!-- Product details-->
-                            <div class="card-body p-4">
+                            <div class="align-items-end card-body p-4 row">
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">{{i.name}}</h5>
-                                   {{i.description}}
+                                   <span class="text-muted">{{i.description}}</span>
                                    <hr>
                                    <i>Prime <strong>{{convertNumber(i.price_prime)}}</strong></i>
                                    <hr>
@@ -53,10 +53,12 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="align-self-center bg-transparent border-top-0 card-footer p-4 pt-0 text-center">
                                 <div class="text-center">
-                                    <a class="btn btn-outline-dark mt-auto" ng-click="addToCart(i.id)">Ajouter au panier</a>
+                                    <a ng-show="i.stock >= 1" class="btn btn-outline-dark mt-auto" ng-click="addToCart(i.id, i.stock)">Ajouter au panier</a>
+                                    <a ng-show="i.stock == 0" class="btn btn-outline-warning mt-auto">Pas en stock</a>
                                 </div>
+                                <span class="text-muted" style="font-size: smaller;">Stock {{i.stock}}</span>
                             </div>
                         </div>
                     </div>

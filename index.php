@@ -9,16 +9,11 @@ include_once($path."/includes/inc.php");
 $logError = "";
 
 if (isConnected()) {
-    // if ($_SESSION["admin"] == 1) {
-    //     header("Location: /administration/guns_stock.php");
-    // } else {
-        header("Location: /amazon.php");
-    // }
+    header("Location: /amazon.php");
 }
 
 //est ce que j'ai un email un mot de passe dans $_POST
 if(isset($_POST['floatingCode0']) && isset($_POST['floatingCode1']) && isset($_POST['floatingCode2']) && isset($_POST['floatingCode3']) && isset($_POST['floatingCode4'])) {
-
     $code = $_POST["floatingCode0"].$_POST["floatingCode1"].$_POST["floatingCode2"].$_POST["floatingCode3"].$_POST["floatingCode4"];
 
     $SQL = "SELECT `id`, `user`, `code`, `admin`, `name_group` FROM `users` WHERE code = '".strtolower($code)."';";
@@ -92,7 +87,7 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                     </label>
                 </div> -->
                 <input class="w-100 btn btn-lg btn-primary" type="submit" value="Se connecter">
-                <p class="mt-5 mb-3 text-muted">C.D.S &copy;2021 - <span class="number-version" style="font-size: small; color: darkgrey;"><?php echo trim(exec('git log --pretty="%h" -n1 HEAD'));?></span> - <span class="number-date" style="font-size: small; color: darkgrey;"><?php $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD'))); $commitDate->setTimezone(new \DateTimeZone('UTC')); echo $commitDate->format('d-m H:i');?></span></p>
+                <p class="mt-5 mb-3 text-muted">C.D.S &copy;2021 - <a target="_blank" href="https://github.com/xalsie/UTDarma/commits/main" class="fw-lighter text-decoration-none"><span class="number-version" style="font-size: small; color: darkgrey;"><?php echo trim(exec('git log --pretty="%h" -n1 HEAD'));?></span></a> - <span class="number-date fw-lighter" style="font-size: small; color: darkgrey;"><?php $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));$date = $commitDate->setTimezone(new \DateTimeZone('UTC'))->add(new DateInterval("PT2H"))->format('d-m H:i'); echo $date;?></span></p>
             </form>
 
             <div style="display: block;">
@@ -104,9 +99,11 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                 <div class="banner banner-right border" style="background-color: #fff;">
                     <div class="cookie-consent-banner__inner">
                     <div class="cookie-consent-banner__copy">
-                        <div class="cookie-consent-banner__description" style="color: #505050;">
-                        Ce site est protégé par des personnes à qui vous ne voulez aucun problème. Si votre commande n'est pas payé dans les temps, vous accpetez de potentiel représailles par ces derniers. En continuant votre navigation vous approuvez les Pepito.
-                        <a href="https://cssscript.com/privacy-policy/" class="link-btn" style="color: #505050;" target="_blank">En savoir plus sur les cookies</a></div>
+                        <div class="cookie-consent-banner__description" style="color: #505050; text-align: center;">
+                        Ce site est protégé par des personnes à qui vous ne voulez aucun problème.
+                        Si votre commande n'est pas payé dans les temps ou que vous essayez de doubler le fournisseur, il y aura des représailles.
+                        En continuant votre navigation vous approuvez les Pepito.
+                        </div>
                     </div>
                     <div class="buttons">
                         <button type="button" id="aceptarCookies" onclick="acceptCookies()" class="cookie-consent-btn" style="background-color: #24273F; color: #fff;">

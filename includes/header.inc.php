@@ -37,7 +37,8 @@
     <link href="/assets/bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
     <link href="/assets/bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Bootstrap icon CSS -->
+    <link href="/assets/bootstrap/css/bootstrap-icons.css" rel="stylesheet" />
 
     <!-- Font-Awesome Pro CSS -->
     <link href="/assets/font-awesome/css/all.min.css?v.5.15.4" rel="stylesheet">
@@ -52,7 +53,7 @@
     <meta name="theme-color" content="#7952b3">
 
     <!-- AngularJs -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="/assets/angularjs/js/angular.min.js"></script>
     <script src="/assets/js/app-angular.js?v1.0"></script>
     <script src="/assets/js/infinite-scroll.js?v1.0"></script>
 
@@ -208,12 +209,10 @@ function side_bar_admin($active_section) {
 function Footer_HTML($IncludeFooter="") {
   $version = trim(exec('git log --pretty="%h" -n1 HEAD'));
   $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
-  $commitDate->setTimezone(new \DateTimeZone('UTC'));
-    $date = $commitDate->format('d-m H:i');
-
+    $date = $commitDate->setTimezone(new \DateTimeZone('UTC'))->add(new DateInterval("PT2H"))->format('d-m H:i');
 	$ret='<!-- Footer-->
     <footer class="py-5 bg-dark">
-        <div class="container"><p class="m-0 text-center text-white">C.D.S &copy;2021 - <span class="number-version" style="font-size: small; color: darkgrey;">'.$version.'</span> - <span class="number-date" style="font-size: small; color: darkgrey;">'.$date.'</span></p></div>
+        <div class="container"><p class="m-0 text-center text-white">C.D.S &copy;2021 - <a target="_blank" href="https://github.com/xalsie/UTDarma/commits/main" class="fw-lighter text-decoration-none"><span class="number-version" style="font-size: small; color: darkgrey;">'.$version.'</span></a> - <span class="number-date fw-lighter" style="font-size: small; color: darkgrey;">'.$date.'</span></p></div>
     </footer>
   </body>
 </html>';
