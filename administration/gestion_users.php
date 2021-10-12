@@ -20,17 +20,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // echo $sql;
 
             $aRow=array();
-                foreach ($aDatas as $row) {
-                    if ($row["admin"] != 2)
-                        $aRow[]=array("id"=>$row["id"], "date_create"=>$row["date_create"], "date_modification"=>$row["date_modification"], "user"=>$row["user"],
-                                    "code"=>"*****", "name_group"=>$row["name_group"],"admin"=>$row["admin"],
-                                    "token"=>$row["token"], "prime"=>$row["prime"]);
-                    else
+                if ($_SESSION["admin"] != 2) {
+                    foreach ($aDatas as $row) {
                         $aRow[]=array("id"=>$row["id"], "date_create"=>$row["date_create"], "date_modification"=>$row["date_modification"], "user"=>$row["user"],
                                     "code"=>$row["code"], "name_group"=>$row["name_group"],"admin"=>$row["admin"],
                                     "token"=>$row["token"], "prime"=>$row["prime"]);
+                    }
+                } else {
+                    foreach ($aDatas as $row) {
+                        if ($row["admin"] != 2)
+                            $aRow[]=array("id"=>$row["id"], "date_create"=>$row["date_create"], "date_modification"=>$row["date_modification"], "user"=>$row["user"],
+                                        "code"=>"*****", "name_group"=>$row["name_group"],"admin"=>$row["admin"],
+                                        "token"=>$row["token"], "prime"=>$row["prime"]);
+                        else
+                            $aRow[]=array("id"=>$row["id"], "date_create"=>$row["date_create"], "date_modification"=>$row["date_modification"], "user"=>$row["user"],
+                                        "code"=>$row["code"], "name_group"=>$row["name_group"],"admin"=>$row["admin"],
+                                        "token"=>$row["token"], "prime"=>$row["prime"]);
+                    }
                 }
-
             echo json_encode($aRow);
         break;
         case 'adduser':
