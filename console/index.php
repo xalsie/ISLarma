@@ -13,10 +13,10 @@ $sql = "SELECT `id`, `game_success` FROM `games` WHERE `id` = '2';";
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html>
     <head>
-        <title>Index of /console</title>
+        <title>Index of /terminal</title>
     </head>
     <body>
-        <h1>Index of /console test</h1>
+        <h1>Index of /terminal</h1>
         <table>
             <tr><th valign="top"><img src="./icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=D">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th><th><a href="?C=D;O=A">Description</a></th></tr>
             <tr><th colspan="5"><hr></th></tr>
@@ -26,6 +26,6 @@ $sql = "SELECT `id`, `game_success` FROM `games` WHERE `id` = '2';";
             <tr><td valign="top"><img src="./icons/unknown.gif" alt="[   ]"></td><td><a href="private.key">private.key</a>            </td><td align="right">2021-10-08 12:50  </td><td align="right">1.7K</td><td>&nbsp;</td></tr>
             <tr><th colspan="5"><hr></th></tr>
         </table>
-        <address>Apache/2.4.39 (Win64) PHP/7.4.0 Server at localhost Port 85</address>
+        <address>Apache/2.4.39 (Linux) PHP/7.4.0 Server at utdarma Port 443</address>
     </body>
 </html>
