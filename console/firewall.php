@@ -11,19 +11,16 @@ $sql = "SELECT `id`, `game_success` FROM `games` WHERE `id` = '2';";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     switch ($_POST["action"]) {
-        case "getlist":
-            
-        break;
         case "numberError":
             $id_game = db_escape($_POST["id_game"]);
 
             $sql = "SELECT nb_faute, date_modification FROM `games` WHERE `id` = '".$id_game."';";
                 $result = db_query($sql);
             
-            if ($result[0]["nb_faute"] > 3 ) {
+            // if ($result[0]["nb_faute"] > 3 ) {
 
                 
-            }
+            // }
             
             echo $result[0]["nb_faute"];
         break;
