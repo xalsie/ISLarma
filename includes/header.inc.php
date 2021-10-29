@@ -3,6 +3,11 @@
 	defined('v1Secureutd') or header('Location: /');
 	
 	function Header_HTML($Title="", $IncludeHeader="") {
+    $token = substr("0123456789", 0, rand(7,12));
+    $terminal = '/'.str_shuffle($token)."@".str_shuffle($token);
+
+    $git = getGitVersion();
+
 	$ret='<!doctype html>
 <html lang="fr" ng-app="appRoot">
   <head>
@@ -17,10 +22,11 @@
     <title>'.$Title.'</title>
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    UTD arma United RP - 0.1.0
-    Updated: September 28, 2021
+    UTD arma United RP - https://github.com/xalsie/UTDarma/commit/'.$git[0].'
+    Updated: '.$git[1].'
     Theme by: LeGrizzly - LeGrizzly#0341
     Support: LeGrizzly#0341
+    Terminal : '.$_SERVER["HTTP_HOST"].$terminal.'
      _                _____          _               _         
     | |              / ____|        (_)             | |        
     | |        ___  | |  __   _ __   _   ____  ____ | |  _   _ 
@@ -207,14 +213,21 @@ function side_bar_admin($active_section) {
 
 
 function Footer_HTML($IncludeFooter="") {
-  $version = trim(exec('git log --pretty="%h" -n1 HEAD'));
-  $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
-    $date = $commitDate->setTimezone(new \DateTimeZone('UTC'))->add(new DateInterval("PT2H"))->format('d-m H:i');
-	$ret='<!-- Footer-->
+  $git = getGitVersion();
+
+	$ret = '<!-- Footer-->
     <footer class="py-5 bg-dark">
-        <div class="container"><p class="m-0 text-center text-white">C.D.S &copy;2021 - <a target="_blank" href="https://github.com/xalsie/UTDarma/commits/main" class="fw-lighter text-decoration-none"><span class="number-version" style="font-size: small; color: darkgrey;">'.$version.'</span></a> - <span class="number-date fw-lighter" style="font-size: small; color: darkgrey;">'.$date.'</span></p></div>
+        <div class="container"><p class="m-0 text-center text-white">C.D.S &copy;2021 - <a target="_blank" href="https://github.com/xalsie/UTDarma/commits/main" class="fw-lighter text-decoration-none"><span class="number-version" style="font-size: small; color: darkgrey;">'.$git[0].'</span></a> - <span class="number-date fw-lighter" style="font-size: small; color: darkgrey;">'.$git[1].'</span></p></div>
     </footer>
   </body>
 </html>';
 	return $ret;
+}
+
+function getGitVersion() {
+  $version = trim(exec('git log --pretty="%h" -n1 HEAD'));
+  $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
+    $date = $commitDate->setTimezone(new \DateTimeZone('UTC'))->add(new DateInterval("PT2H"))->format('d-m H:i');
+  
+  return array($version, $date);
 }

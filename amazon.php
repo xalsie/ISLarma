@@ -27,6 +27,9 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
             margin-right: auto;
             margin-top: 10%;
         }
+        .maxsizepng {
+            max-width: 100px;
+        }
     </style>
     <body ng-controller="appCommon" ng-init="getFromUrl(); getBadgeCart();">
         <!-- Navigation-->
@@ -39,7 +42,7 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                     <div class="col mb-5" id="{{i.id}}" ng-repeat="i in responseMap">
                         <div class="card h-100 rounded-4 shadow-sm">
                             <!-- Product image-->
-                            <img class="card-img-top" src="\assets\image\arms\{{i.image}}" alt="er" />
+                            <img ng-class="{'maxsizepng': i.image == 'chargeur.png'}" class="card-img-top" src="\assets\image\arms\{{i.image}}" alt="er" />
                             <!-- Product details-->
                             <div class="align-items-end card-body p-4 row">
                                 <div class="text-center">
@@ -65,12 +68,6 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                 </div>
             </div>
         </section>
-
-        <script>
-            function numberWithSpaces(x) {
-                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-            }
-        </script>
 
 <?php
   echo Footer_HTML();

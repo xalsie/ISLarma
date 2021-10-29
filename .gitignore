@@ -12,3 +12,4 @@ config.json
 includes/config.inc.php
 Dev/*
 _outils/*
+*.dev

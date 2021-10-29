@@ -17,8 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sql="SELECT * FROM `users` ORDER BY user";
             $aDatas=db_query($sql);
 
-            // echo $sql;
-
             $aRow=array();
                 if ($_SESSION["admin"] != 2) {
                     foreach ($aDatas as $row) {

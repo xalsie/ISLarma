@@ -38,6 +38,12 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
             margin-top: 8rem !important;
             margin-bottom: 8rem !important;
         }
+
+        footer.footer {
+            bottom: 0;
+            position: initial;
+            width: 100%;
+        }
     </style>
     <body ng-controller="appCommon" ng-init="getBadgeCart(); getCart(); getDelivery();">
         <!-- Navigation-->
@@ -46,7 +52,7 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
         <div class="container my-8">
             <div class="p-4 align-items-center rounded-3 border shadow-lg text-center">
                 <div class="col-lg-6 mx-auto">
-                    <p class="lead mb-4">DarkChat :</p>
+                    <p class="lead mb-4">Votre commande à bien été prise en compte rendez-vous sur le DarkChat ci-dessous pour finaliser votre achat :</p>
                 </div>
                 <h1 class="display-5 fw-bold" id="darkchat"></h1>
                 <div class="col align-self-start back-to-shop"><a class="btn btn-outline-dark" href="/amazon.php"><i class="fab fa-amazon me-2"></i>Retourner au achat</a></div>

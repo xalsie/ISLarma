@@ -12,7 +12,15 @@ $IncludeHeader .= '<script src="/assets/js/app-angular.js"></script>';
 $IncludeHeader .= '<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>';
 
 $IncludeHeader .= '<script src="https://unpkg.com/freezeframe/dist/freezeframe.min.js"></script>';
-$IncludeHeader .= '<script src="./ascii-progress.js"></script>';
+$IncludeHeader .= '<script src="/console/ascii-progress.js"></script>';
+
+/*
+ * Select random code in base for win mini-game hack
+ * SELECT code FROM users
+ *  WHERE admin = 0 
+ *  ORDER BY RAND()
+ *  LIMIT 1;
+ */
 
 echo Header_HTML("UTDarma - United RP", $IncludeHeader);
 ?>
@@ -21,7 +29,7 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
     <!-- Body Section -->
     <main class="container" id="bootloader-gif" style="background-color: #111113; overflow: none;">
       <div class="row justify-content-md-center align-items-center">
-        <img id="bootloader-gif--id" src="./1_maDrNlkweHWnmSitCGjj0A.gif" alt="gif boot" autoplay="false" preload="auto" width="400" />
+        <img id="bootloader-gif--id" src="/console/1_maDrNlkweHWnmSitCGjj0A.gif" alt="gif boot" autoplay="false" preload="auto" width="400" />
       </div>
     </main>
 

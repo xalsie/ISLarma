@@ -87,7 +87,7 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                     </label>
                 </div> -->
                 <input class="w-100 btn btn-lg btn-primary" type="submit" value="Se connecter">
-                <p class="mt-5 mb-3 text-muted">C.D.S &copy;2021 - <a target="_blank" href="https://github.com/xalsie/UTDarma/commits/main" class="fw-lighter text-decoration-none"><span class="number-version" style="font-size: small; color: darkgrey;"><?php echo trim(exec('git log --pretty="%h" -n1 HEAD'));?></span></a> - <span class="number-date fw-lighter" style="font-size: small; color: darkgrey;"><?php $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));$date = $commitDate->setTimezone(new \DateTimeZone('UTC'))->add(new DateInterval("PT2H"))->format('d-m H:i'); echo $date;?></span></p>
+                <p class="mt-5 mb-3 text-muted">C.D.S &copy;2021 - <a target="_blank" href="https://github.com/xalsie/UTDarma/commits/main" class="fw-lighter text-decoration-none"><span class="number-version" style="font-size: small; color: darkgrey;"><?php echo getGitVersion()[0];?></span></a> - <span class="number-date fw-lighter" style="font-size: small; color: darkgrey;"><?php echo getGitVersion()[1];?></span></p>
             </form>
 
             <div style="display: block;">

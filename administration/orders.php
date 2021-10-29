@@ -14,14 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	// print_r($_POST);
 	switch ($_POST['action']){
 		case "getlist":
+            $status = (db_escape($_POST["filter"]) == "3")? "%":db_escape($_POST["filter"]);
+
             //Chargement de la liste des logins
-            $sql="SELECT * FROM `orders` ORDER BY date_create";
+            $sql="SELECT os.*, dy.name, dy.description AS dy_description, dy.price FROM `orders` AS os INNER JOIN `delivery` AS dy WHERE os.statut LIKE '".$status."' AND os.livraison = dy.id ORDER BY os.date_create;";
                 $aDatas=db_query($sql);
 
             $aRow=array();
             foreach ($aDatas as $row) {
                 $aRow[]=array("id"=>$row["id"], "date_create"=>$row["date_create"], "date_modification"=>$row["date_modification"], "user"=>$row["user"],
-                                "name_group"=>$row["name_group"], "darkchat"=>$row["darkchat"],"livraison"=>$row["livraison"],"statut"=>$row["statut"],
+                                "name_group"=>$row["name_group"], "darkchat"=>$row["darkchat"],"livraison_id"=>$row["livraison"],"livraison_name"=>$row["name"],"livraison_price"=>$row["price"],"statut"=>$row["statut"],
                                 "user_modification"=>$row["user_modification"], "description"=>$row["description"]);
             }
             echo json_encode($aRow);
@@ -29,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'getOrderListArma':
             $data = $_POST["data"];
 
-            $SQL = "SELECT id, name, description, stock FROM weapons WHERE id IN (".$data.") AND visible = 1;";
+            $SQL = "SELECT id, name, description, stock, price FROM weapons WHERE id IN (".$data.") AND visible = 1;";
                 $result = db_query($SQL);
 
             echo json_encode($result);
@@ -122,6 +124,24 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                 <h2>Gestionnaire Commandes</h2>
                 <hr>
 
+                <div id="toolbar">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="toolbar_inlineRadioOptions" id="toolbar_inlineRadio0" value="3" checked>
+                        <label class="form-check-label" for="toolbar_inlineRadio0">Tous</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="toolbar_inlineRadioOptions" id="toolbar_inlineRadio1" value="1">
+                        <label class="form-check-label" for="toolbar_inlineRadio1">Valider</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="toolbar_inlineRadioOptions" id="toolbar_inlineRadio2" value="2">
+                        <label class="form-check-label" for="toolbar_inlineRadio2">Annuler</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="toolbar_inlineRadioOptions" id="toolbar_inlineRadio3" value="0">
+                        <label class="form-check-label" for="toolbar_inlineRadio3">En attente</label>
+                    </div>
+                </div>
                 <table class="table caption-top table-responsive table-striped table-hover"
                     id="table"
                     data-toolbar="#toolbar"
@@ -155,7 +175,7 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                             <th data-field="user" data-width="100" data-sortable="true" data-halign="center">User</th>
                             <th data-field="name_group" data-width="100" data-sortable="true" data-halign="center">Nom Groupe</th>
                             <th data-field="darkchat" data-width="100" data-sortable="true" data-halign="center">Dark Chat</th>
-                            <th data-field="livraison" data-width="100" data-sortable="true" data-halign="center">Livraison</th>
+                            <th data-field="livraison_name" data-width="100" data-sortable="true" data-halign="center">Livraison</th>
                             <th data-field="statut" data-width="100" data-sortable="true" data-halign="center" data-formatter="toCheckbox">Statut</th>
                             <th data-field="user_modification" data-width="100" data-sortable="true" data-halign="center" data-visible="false">Prime</th>
                             <th data-field="description" data-width="100" data-sortable="true" data-halign="center" data-visible="false">description</th>
@@ -181,6 +201,7 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                 var _json = JSON.parse(row.description);
                 var _rtn = "";
                 var str = [];
+                var total = 0;
 
                 $.each(_json, function( key, value ) {
                     str.push(key);
@@ -198,18 +219,29 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                     },
                     success: function (html) {
                         $.each(html, function( key, value ) {
-                            _rtn += value.name +" x"+ _json[value.id] +"\n";
+                            _rtn += value.name +" x"+ _json[value.id] +" - "+ numberWithSpaces(_json[value.id]*value.price) + "\n"; // price + total
+                            total += _json[value.id]*value.price;
                         });
                     }
                 })
 
+                _rtn += "Livraison : "+ row.livraison_name +" - "+ numberWithSpaces(row.livraison_price) +"\n    TOTAL : "+ numberWithSpaces(total+parseInt(row.livraison_price));
                 return _rtn;
+            }
+
+            function numberWithSpaces(x) {
+                return "$ "+parseInt(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
             }
 
             function postQueryParams(params) {
                 params.action = "getlist";
+                params.filter = $("#toolbar [type='radio']:checked").val();
                 return params;
             }
+
+            $("#toolbar [type='radio']").change(() => {
+                $('#table').bootstrapTable('refresh');
+            });
 
             function actionFormatter(value, row, index) {
                 return [
