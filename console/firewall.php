@@ -24,6 +24,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             echo $result[0]["nb_faute"];
         break;
+        case "numberSuccess":
+            $id_game = db_escape($_POST["id_game"]);
+
+            $sql = "SELECT game_success, date_modification FROM `games` WHERE `id` = '".$id_game."';";
+                $result = db_query($sql);
+            
+            // if ($result[0]["nb_faute"] > 3 ) {
+
+                
+            // }
+            
+            echo $result[0]["game_success"];
+        break;
+        case "toResetTimer":
+            $id_game = db_escape($_POST["id_game"]);
+
+            $sql = "UPDATE `games` SET `nb_faute` = 0, date_modification = now() WHERE `id` = '".$id_game."';";
+                    $result = db_execute($sql);
+            
+            echo $result[0]["game_success"];
+        break;
         case "getTimeToTimer":
             $id_game = db_escape($_POST["id_game"]);
 
@@ -36,28 +57,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_game = db_escape($_POST["id_game"]);
             $success = db_escape($_POST["data"]);
 
-            if ($success) {
-                $_SESSION["GAME"][$id_game]["success"] = $_SESSION["GAME"][$id_game]["success"] + 1;
+            $sql = "SELECT * FROM `games` WHERE `id` = '".$id_game."';";
+                $result1 = db_query($sql);
 
-                if ($_SESSION["GAME"][$id_game]["success"] == 3) {
-                    $sql = "UPDATE `games` SET `game_success` = 1, date_modification = now() WHERE `id` = '".$id_game."';";
+            if ($result1[0]["nb_faute"] > 3) {
+                
+            }
+
+            if ($success == 1) {
+                // $_SESSION["GAME"][$id_game]["success"] = $_SESSION["GAME"][$id_game]["success"] + 1;
+
+                // if ($_SESSION["GAME"][$id_game]["success"] == 3) {
+                    $sql = "UPDATE `games` SET `game_success` = game_success+1, date_modification = now() WHERE `id` = '".$id_game."';";
                         $result = db_execute($sql);
                     
-                    $_SESSION["GAME"][$id_game]["success"] = 0;
-                }
-            } else {
+                    // $_SESSION["GAME"][$id_game]["success"] = 0;
+                // }
+            } else if ($success == 0){
                 $sql = "UPDATE `games` SET `nb_faute` = nb_faute+1, date_modification = now() WHERE `id` = '".$id_game."';";
                     $result = db_execute($sql);
             }
-            
-            $sql = "SELECT * FROM `games` WHERE `id` = '".$id_game."';";
-                $result = db_query($sql);
 
-            // if ($result[0]["nb_faute"] > 3) {
-                
-            // }
-
-            echo $result[0]["nb_faute"];
+            echo $result1[0]["nb_faute"];
         break;
     }
     exit;
@@ -134,7 +155,7 @@ $IncludeHeader = '<link href="/static/css/main.5e1d8052.chunk.css" rel="styleshe
     <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <style>
-        .ObjectiveError {
+        .ObjectiveError, .ObjectiveSuccess {
             font-size: small;
             font-weight: 700;
             font-family: monospace;

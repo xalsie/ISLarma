@@ -182,8 +182,8 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
 
             function ShowDeleteDelivery(row) {
                 Swal.fire({
-                    title: "Supprimer un utilisateur",
-                    html:	'Etes-vous sûr de vouloir supprimer l\'utiliseur "'+row["user"]+' - '+row["name_group"]+'" ?',
+                    title: "Supprimer un mode de livraison",
+                    html:	'Etes-vous sûr de vouloir supprimer ce mode de livraison "'+row["user"]+' - '+row["name_group"]+'" ?',
                     width: '600px',
                     allowEscapeKey:true,
                     showCancelButton: true,

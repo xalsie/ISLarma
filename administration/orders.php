@@ -341,7 +341,7 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
 
             function ShowDeleteOrder(row) {
                 Swal.fire({
-                    title: "Supprimer un utilisateur",
+                    title: "Supprimer une commandes",
                     html:	'Etes-vous sûr de vouloir supprimer la commande "'+row["darkchat"]+'" ?',
                     width: '600px',
                     allowEscapeKey:true,

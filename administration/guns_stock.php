@@ -197,8 +197,8 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
 
             function ShowDeleteItem(row) {
                 Swal.fire({
-                    title: "Supprimer un utilisateur",
-                    html:	'Etes-vous sûr de vouloir supprimer l\'items "'+row["name"]+'" ?',
+                    title: "Supprimer un item",
+                    html:	'Etes-vous sûr de vouloir supprimer l\'item "'+row["name"]+'" ?',
                     width: '600px',
                     allowEscapeKey:true,
                     showCancelButton: true,

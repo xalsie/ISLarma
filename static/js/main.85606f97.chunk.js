@@ -113,6 +113,7 @@
                                 );
                             })
                         ),
+                        n.a.createElement("p", { className: "ObjectiveSuccess" }, getNumberSuccess()),
                         n.a.createElement("p", { className: "ObjectiveError" }, getNumberError()),
                     );
                 },
@@ -429,7 +430,7 @@
 
 
 function getNumberError() {
-    var numError = 0;
+    var numError = "";
 
     var send = $.ajax({
         method: 'POST',
@@ -444,8 +445,24 @@ function getNumberError() {
     });
 }
 
+function getNumberSuccess() {
+    var numError = "";
+
+    var send = $.ajax({
+        method: 'POST',
+        url:'/console/firewall.php',
+        data: {
+            autofunc:true,
+            action:'numberSuccess',
+            id_game: 1
+        }
+    }).done(function(data) {
+        $("p.ObjectiveSuccess").html("success : "+data+" / 3")
+    });
+}
+
 function getSetTimer() {
-    var toTimer = 0;
+    var toTimer = "";
 
     var send = $.ajax({
         method: 'POST',
@@ -484,6 +501,21 @@ function getCountDown() {
     });
 }
 
+function toResetTimer() {
+    var send = $.ajax({
+        method: 'POST',
+        url:'/console/firewall.php',
+        async: false,
+        data: {
+            autofunc:true,
+            action:'toResetTimer',
+            id_game: 1
+        }
+    }).done(function(data) {
+        countDown(data);
+    });
+}
+
 function countDown(date) {
     // Set the date we're counting down to
     var countDownDate = new Date(date).getTime() + (6*60*60*1000);
@@ -513,7 +545,10 @@ function countDown(date) {
         if (distance < 0) {
             clearInterval(x);
 
-            document.getElementById("timerText").innerHTML = "EXPIRED";
+            toResetTimer();
+
+            // document.getElementsByClassName("timerText")[0].innerHTML = "EXPIRED";
+            // document.getElementsByClassName("timerText")[0].attributes[1].nodeValue = "EXPIRED";
         }
     }, 1000);
 }
