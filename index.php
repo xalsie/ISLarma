@@ -58,8 +58,8 @@ echo Header_HTML("ISLarma - Immersion Life", $IncludeHeader);
             border-radius: 1rem;
         }
         .form-control:focus {
-            border-color: #F1AE3A;
-            box-shadow: 0 0 0 0.25rem rgb(241 174 58 / 40%);
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.25rem rgba(240, 59, 59, 0.5);
             z-index: 1;
         }
 

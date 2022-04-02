@@ -1,6 +1,6 @@
 # ISLarma
 
-Site web de vente d'arme pour UNITED RP
+Site web de vente d'arme pour Immersion Life
 
 **ISLarma**
 ```
@@ -30,4 +30,4 @@ Connexion avec un compte obligatoire
 >
 >「❌」Abonnement Prime
 
-![ISLarma login](https://user-images.githubusercontent.com/41363694/139409637-7607cc6c-7ce8-4abb-970f-9044cfb6ea95.png)
+![ISLarma login](https://cdn.discordapp.com/attachments/959417581612187718/959877334142431272/unknown.png?size=4096)
