@@ -1,6 +1,6 @@
 <?php
 	//àéè
-	defined('v1Secureutd') or header('Location: /');
+	defined('v1Secureisl') or header('Location: /');
 
 function db_connect() {
 	global $db_link;

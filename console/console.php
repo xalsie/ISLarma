@@ -22,7 +22,7 @@ $IncludeHeader .= '<script src="/console/ascii-progress.js"></script>';
  *  LIMIT 1;
  */
 
-echo Header_HTML("UTDarma - United RP", $IncludeHeader);
+echo Header_HTML("ISLarma - Immersion Life", $IncludeHeader);
 ?>
 </head>
 <body style="overflow: hidden;">

@@ -100,7 +100,7 @@ $logError = "";
 $IncludeHeader = '<link href="/assets/css/sidebar.style.css" rel="stylesheet">';
 $IncludeHeader .= '<link href="/assets/css/tabBackOffice.style.css" rel="stylesheet">';
 
-echo Header_HTML("UTDarma - United RP", $IncludeHeader);
+echo Header_HTML("ISLarma - Immersion Life", $IncludeHeader);
 ?>
     <body>
         <main ng-controller="appCommon">

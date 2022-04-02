@@ -13,7 +13,7 @@ if (!isConnected() | empty($_SESSION["panier"])) {
 $IncludeHeader = '<script src="/assets/js/app-angular.js?v1.0"></script>';
 $IncludeHeader .= '<link href="/assets/css/cart.styles.css?v1.0" rel="stylesheet" />';
 
-echo Header_HTML("UTDarma - United RP", $IncludeHeader);
+echo Header_HTML("ISLarma - Immersion Life", $IncludeHeader);
 ?>
     <style>
         .dropdown-menu[data-bs-popper] {

@@ -15,7 +15,7 @@ if (!isConnected()) {
 
 switch($_GET['action']) {
     case 'getListItems':
-        $SQL = "SELECT `id`, `name`, `description`, `image`, `price`, `price_prime`, `stock` FROM `weapons` ORDER BY `name` ASC;";
+        $SQL = "SELECT `id`, `name`, `description`, `image`, `price`, `price_prime`, `stock` FROM `weapons` WHERE visible = 1 ORDER BY `name` ASC;";
             $result = db_query($SQL);
 
         $resetCommande = array_count_values($_SESSION["panier"]);

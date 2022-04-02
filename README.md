@@ -1,8 +1,8 @@
-# UTDarma
+# ISLarma
 
 Site web de vente d'arme pour UNITED RP
 
-**UTDarma**
+**ISLarma**
 ```
 Connexion avec un compte obligatoire
 ``` 
@@ -25,9 +25,9 @@ Connexion avec un compte obligatoire
 > 
 > 「❌」Recevoir la commande sur le discord
 
-**UTD Prime**
+**ISL Prime**
 >「✔」System de Prime livraison dans l’heure par le transporteur
 >
 >「❌」Abonnement Prime
 
-![UTDarma login](https://user-images.githubusercontent.com/41363694/139409637-7607cc6c-7ce8-4abb-970f-9044cfb6ea95.png)
+![ISLarma login](https://user-images.githubusercontent.com/41363694/139409637-7607cc6c-7ce8-4abb-970f-9044cfb6ea95.png)

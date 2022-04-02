@@ -35,7 +35,7 @@ if(isset($_POST['floatingCode0']) && isset($_POST['floatingCode1']) && isset($_P
 
 $IncludeHeader = '<link href="/assets/css/login.style.css" rel="stylesheet">';
 
-echo Header_HTML("UTDarma - United RP", $IncludeHeader);
+echo Header_HTML("ISLarma - Immersion Life", $IncludeHeader);
 ?>
     <style>
         .form-floating>.form-control:focus, .form-floating>.form-control:not(:placeholder-shown) {
@@ -87,7 +87,7 @@ echo Header_HTML("UTDarma - United RP", $IncludeHeader);
                     </label>
                 </div> -->
                 <input class="w-100 btn btn-lg btn-primary" type="submit" value="Se connecter">
-                <p class="mt-5 mb-3 text-muted">C.D.S &copy;2021 - <a target="_blank" href="https://github.com/xalsie/UTDarma/commits/main" class="fw-lighter text-decoration-none"><span class="number-version" style="font-size: small; color: darkgrey;"><?php echo getGitVersion()[0];?></span></a> - <span class="number-date fw-lighter" style="font-size: small; color: darkgrey;"><?php echo getGitVersion()[1];?></span></p>
+                <p class="mt-5 mb-3 text-muted">SAVIORS &copy;2022 - <a target="_blank" href="https://github.com/xalsie/ISLarma/commits/main" class="fw-lighter text-decoration-none"><span class="number-version" style="font-size: small; color: darkgrey;"><?php echo getGitVersion()[0];?></span></a> - <span class="number-date fw-lighter" style="font-size: small; color: darkgrey;"><?php echo getGitVersion()[1];?></span></p>
             </form>
 
             <div style="display: block;">

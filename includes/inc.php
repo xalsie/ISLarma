@@ -4,7 +4,7 @@
 	// 	defined('v1SecureForeCaster') or header('Location: /');
 	//  include_once("/var/www/html/SiteChrono/includes/inc.php");
 
-	define('v1Secureutd',"WEB");
+	define('v1Secureisl',"WEB");
 	
 	if (empty(@$_SERVER["DOCUMENT_ROOT"]) || @$_SERVER["DOCUMENT_ROOT"] == "C:/wamp64/www") {
 		$path = "C:/wamp64/www/amazonArma";

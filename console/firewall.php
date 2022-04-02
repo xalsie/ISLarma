@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 $IncludeHeader = '<link href="/static/css/main.5e1d8052.chunk.css" rel="stylesheet">';
 
-// echo Header_HTML("FireWall UTDarma - United RP", $IncludeHeader);
+// echo Header_HTML("FireWall ISLarma - Immersion Life", $IncludeHeader);
 ?>
 <!doctype html>
 <html lang="fr" ng-app="appRoot">
@@ -98,10 +98,10 @@ $IncludeHeader = '<link href="/static/css/main.5e1d8052.chunk.css" rel="styleshe
     <meta name="keywords" content="arma,rp,united,photo,gta,five,fivem,gta online,gta server">
     <meta name="author" content="LeGrizzly#0341">
 
-    <title>FireWall UTDarma - United RP</title>
+    <title>FireWall ISLarma - Immersion Life</title>
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    UTD arma United RP - https://github.com/xalsie/UTDarma/commit/<?php echo getGitVersion()[0]."\n";?>
+    ISL arma Immersion Life - https://github.com/xalsie/ISLarma/commit/<?php echo getGitVersion()[0]."\n";?>
     Updated: <?php echo getGitVersion()[1]."\n";?>
     Theme by: LeGrizzly - LeGrizzly#0341
     Support: LeGrizzly#0341
